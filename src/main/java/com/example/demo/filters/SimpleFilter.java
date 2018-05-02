@@ -48,7 +48,7 @@ public class SimpleFilter extends ZuulFilter {
             InputStream in = ctx.getRequest().getInputStream();
             String body = StreamUtils.copyToString(in, Charset.forName("UTF-8"));
             Map<String, Object> stringObjectMap = new GsonJsonParser().parseMap(body);
-            byte[] encodedBytes = Base64.getEncoder().encode("1234".getBytes());
+            byte[] encodedBytes = Base64.getEncoder().encode("test".getBytes());
             stringObjectMap.replace("image", new String(encodedBytes));
             String s = new Gson().toJson(stringObjectMap);
             log.info(s);
